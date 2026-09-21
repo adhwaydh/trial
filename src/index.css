@@ -1,0 +1,596 @@
+/* =========================================================
+   PeerGrid Mobile App - Figma Prototype Design System
+   Exact implementation of PeerGrid Figma Design
+   ========================================================= */
+
+:root {
+  /* Figma Palette */
+  --fg-bg: #ffffff;
+  --fg-bg-accent: #f0f9ff;
+  --fg-cyan: #5be2f6;
+  --fg-cyan-light: #d6f7fd;
+  --fg-blue-primary: #0084ff;
+  --fg-blue-dark: #1e88e5;
+  --fg-blue-banner: #1d72b8;
+  --fg-card-light: #e8f4fd;
+  --fg-card-gray: #d9d9d9;
+  --fg-card-soft: #f1f5f9;
+  --fg-border: #1e293b;
+  --fg-text-main: #0a0e1a;
+  --fg-text-muted: #556270;
+  --fg-text-light: #8e9ca8;
+
+  /* Specific Event Card Colors from Figma */
+  --evt-purple: #7c5ce7;
+  --evt-lime: #d8e273;
+  --evt-blue: #4facfe;
+
+  /* Font */
+  --font-main: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-heading: 'Outfit', -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  -webkit-tap-highlight-color: transparent;
+}
+
+body {
+  background-color: #0b111e;
+  font-family: var(--font-main);
+  color: var(--fg-text-main);
+  -webkit-font-smoothing: antialiased;
+  min-height: 100vh;
+}
+
+/* Outer Desktop Frame */
+.figma-app-outer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  padding: 16px 8px;
+  background: radial-gradient(circle at 50% 20%, #152238 0%, #080d17 100%);
+}
+
+.figma-top-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  max-width: 430px;
+  margin-bottom: 12px;
+  padding: 8px 16px;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 99px;
+  font-size: 12px;
+  color: #fff;
+}
+
+.figma-toggle-btn {
+  background: #0084ff;
+  color: #fff;
+  border: none;
+  border-radius: 20px;
+  padding: 4px 12px;
+  font-size: 11px;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  transition: all 0.2s ease;
+}
+.figma-toggle-btn:hover {
+  filter: brightness(1.1);
+}
+
+/* Mobile Screen Container */
+.figma-mobile-viewport {
+  width: 100%;
+  max-width: 412px;
+  height: 850px;
+  max-height: 94vh;
+  background: #ffffff;
+  border-radius: 46px;
+  border: 10px solid #1c2438;
+  box-shadow: 0 25px 60px -15px rgba(0, 0, 0, 0.8),
+              0 0 0 1px rgba(255, 255, 255, 0.15);
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.figma-mobile-viewport.fullscreen {
+  max-width: 520px;
+  height: 100vh;
+  max-height: 100vh;
+  border: none;
+  border-radius: 0;
+  box-shadow: none;
+}
+
+/* Mobile Status Bar */
+.figma-status-bar {
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 24px;
+  font-size: 12px;
+  font-weight: 700;
+  color: #000;
+  z-index: 50;
+  flex-shrink: 0;
+  background: transparent;
+}
+
+.figma-notch {
+  width: 100px;
+  height: 22px;
+  background: #000;
+  border-radius: 20px;
+}
+
+/* Screen Content Area */
+.figma-screen-body {
+  flex: 1;
+  overflow-y: auto;
+  overflow-x: hidden;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 85px; /* Space for floating pill bar */
+}
+
+/* Cyan Abstract Decorative Blobs (Exact signature of Figma design) */
+.cyan-blob-top-right {
+  position: absolute;
+  top: -40px;
+  right: -50px;
+  width: 220px;
+  height: 220px;
+  border-radius: 50%;
+  background: #62e5f8;
+  opacity: 0.65;
+  filter: blur(2px);
+  pointer-events: none;
+  z-index: 1;
+}
+
+.cyan-blob-mid-left {
+  position: absolute;
+  top: 180px;
+  left: -80px;
+  width: 180px;
+  height: 240px;
+  border-radius: 50%;
+  background: #62e5f8;
+  opacity: 0.65;
+  filter: blur(2px);
+  pointer-events: none;
+  z-index: 1;
+}
+
+.cyan-blob-bottom-left {
+  position: absolute;
+  bottom: 0;
+  left: -60px;
+  width: 190px;
+  height: 260px;
+  border-radius: 50%;
+  background: #62e5f8;
+  opacity: 0.65;
+  filter: blur(2px);
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Home Header */
+.home-header-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 20px 8px;
+  position: relative;
+  z-index: 10;
+}
+
+.user-greeting {
+  font-family: var(--font-heading);
+  font-size: 24px;
+  font-weight: 800;
+  color: #000000;
+  letter-spacing: -0.5px;
+}
+
+.user-avatar-circle {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: #000;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+  transition: transform 0.2s;
+}
+.user-avatar-circle:hover {
+  transform: scale(1.05);
+}
+
+/* Discover Hero Banner */
+.discover-banner-card {
+  margin: 12px 20px;
+  background: #d8d8d8;
+  border-radius: 36px;
+  padding: 22px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+  z-index: 10;
+  overflow: hidden;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.06);
+}
+
+.discover-banner-text {
+  font-family: var(--font-heading);
+  font-size: 24px;
+  font-weight: 800;
+  line-height: 1.25;
+  color: #0084ff;
+  max-width: 170px;
+}
+
+.discover-banner-illustration {
+  width: 130px;
+  height: 110px;
+  object-fit: contain;
+}
+
+/* Category Navigation Pill (Colleges, Events, Community) */
+.category-pill-container {
+  margin: 10px 20px 16px;
+  background: #d8d8d8;
+  border: 1.5px solid #000;
+  border-radius: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  padding: 8px 12px;
+  position: relative;
+  z-index: 10;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.cat-icon-btn {
+  background: none;
+  border: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  padding: 6px 14px;
+  border-radius: 20px;
+  transition: all 0.2s ease;
+  color: #000;
+}
+.cat-icon-btn:hover, .cat-icon-btn.active {
+  background: rgba(0, 132, 255, 0.15);
+  color: #0084ff;
+  transform: translateY(-2px);
+}
+
+/* Top Colleges Section */
+.top-colleges-container {
+  background: #7ec7ec;
+  border-radius: 36px 36px 0 0;
+  padding: 22px 18px 20px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  position: relative;
+  z-index: 10;
+  box-shadow: 0 -6px 20px rgba(0, 0, 0, 0.08);
+}
+
+.top-colleges-title {
+  text-align: center;
+  font-family: var(--font-heading);
+  font-size: 22px;
+  font-weight: 900;
+  color: #000000;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+.college-card-figma {
+  background: #d9d9d9;
+  border: 1.5px solid #000;
+  border-radius: 22px;
+  padding: 12px 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.college-card-figma:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.12);
+}
+
+.college-card-figma-title {
+  font-size: 15px;
+  font-weight: 700;
+  color: #000;
+}
+
+.college-card-figma-body {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.college-card-thumb {
+  width: 110px;
+  height: 68px;
+  border-radius: 12px;
+  object-fit: cover;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+}
+
+.college-card-details {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  font-size: 13px;
+  color: #000;
+}
+
+/* Floating Bottom Navigation Pill */
+.figma-floating-nav {
+  position: absolute;
+  bottom: 18px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 210px;
+  height: 52px;
+  background: rgba(145, 172, 192, 0.85);
+  backdrop-filter: blur(14px);
+  border-radius: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  padding: 0 16px;
+  z-index: 100;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.nav-capsule-btn {
+  background: none;
+  border: none;
+  color: #1e293b;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  transition: all 0.2s ease;
+}
+.nav-capsule-btn.active {
+  color: #000;
+  background: rgba(255, 255, 255, 0.5);
+  transform: scale(1.1);
+}
+
+/* Generic Screen Header (Back arrow + Title) */
+.figma-screen-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 18px;
+  position: relative;
+  z-index: 10;
+}
+
+.figma-back-btn {
+  background: none;
+  border: none;
+  color: #000;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  transition: background 0.2s;
+}
+.figma-back-btn:hover {
+  background: rgba(0, 0, 0, 0.05);
+}
+
+.figma-screen-title {
+  font-family: var(--font-heading);
+  font-size: 20px;
+  font-weight: 800;
+  color: #000;
+  text-align: center;
+  flex: 1;
+}
+
+/* Predict Your College Screen (Figure 3) */
+.predict-form-card {
+  margin: 10px 18px;
+  background: #e8f4fd;
+  border-radius: 26px;
+  padding: 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  position: relative;
+  z-index: 10;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.05);
+}
+
+.predict-results-container {
+  background: #d9d9d9;
+  border-radius: 36px 36px 0 0;
+  padding: 22px 18px 20px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  position: relative;
+  z-index: 10;
+}
+
+.predicted-college-card {
+  background: #ffffff;
+  border: 1.5px solid #10b981;
+  border-radius: 20px;
+  padding: 12px 14px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.04);
+}
+
+.predicted-college-card.moderate {
+  border-color: #3b82f6;
+}
+
+/* Events Screen (Figure 4) */
+.events-purple-card {
+  background: #7c5ce7;
+  border: 1.5px solid #000;
+  border-radius: 24px;
+  padding: 14px;
+  display: flex;
+  gap: 14px;
+  color: #fff;
+  position: relative;
+  z-index: 10;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.events-lime-card {
+  background: #d8e273;
+  border: 1.5px solid #000;
+  border-radius: 24px;
+  padding: 14px;
+  display: flex;
+  gap: 14px;
+  color: #000;
+  position: relative;
+  z-index: 10;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* Community Screen (Figure 5) */
+.community-create-box {
+  margin: 10px 18px;
+  background: #eef6fc;
+  border: 1.5px solid #000;
+  border-radius: 22px;
+  padding: 14px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  position: relative;
+  z-index: 10;
+}
+
+.community-club-card {
+  background: #ffffff;
+  border: 1.5px solid #000;
+  border-radius: 20px;
+  padding: 12px 14px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  position: relative;
+  z-index: 10;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+}
+
+/* College Reviews Screen (Figure 6) */
+.reviews-overview-card {
+  margin: 10px 18px;
+  background: #e8f4fd;
+  border: 1.5px solid #000;
+  border-radius: 24px;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  position: relative;
+  z-index: 10;
+}
+
+.review-item-card {
+  background: #ffffff;
+  border: 1.5px solid #000;
+  border-radius: 20px;
+  padding: 12px 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  position: relative;
+  z-index: 10;
+}
+
+/* Common Pill Inputs and Buttons */
+.figma-pill-input {
+  width: 100%;
+  background: #ffffff;
+  border: 1px solid #c7d2fe;
+  border-radius: 24px;
+  padding: 8px 14px;
+  font-size: 13px;
+  outline: none;
+  color: #000;
+}
+
+.figma-pill-select {
+  width: 100%;
+  background: #ffffff;
+  border: 1px solid #c7d2fe;
+  border-radius: 24px;
+  padding: 8px 14px;
+  font-size: 13px;
+  outline: none;
+  color: #000;
+  cursor: pointer;
+}
+
+.figma-btn-blue {
+  background: #0084ff;
+  color: #fff;
+  border: none;
+  border-radius: 24px;
+  padding: 8px 16px;
+  font-weight: 700;
+  font-size: 13px;
+  cursor: pointer;
+  transition: filter 0.2s;
+}
+.figma-btn-blue:hover {
+  filter: brightness(1.1);
+}
